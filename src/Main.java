@@ -54,8 +54,12 @@ public class Main {
                     System.out.println("Bitte Zahl 1: ");
                     a = sc.nextDouble();
 
-                    result = Calculate.squareRoot(a);
-                    System.out.println(result);
+                    try {
+                        result = Calculate.squareRoot(a);
+                        System.out.println(result);
+                    } catch (NegativeNumberException e) {
+                        throw new NegativeNumberException();
+                    }
                 }
                 case "6" -> {
                     System.out.println("Bitte Zahl 1: ");
@@ -72,12 +76,5 @@ public class Main {
 
         }
 
-
-        try {
-            result = Calculate.squareRoot(-5);
-            System.out.println(result);
-        } catch (NegativeNumberException e) {
-            throw new NegativeNumberException();
-        }
     }
 }
