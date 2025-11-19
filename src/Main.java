@@ -52,8 +52,12 @@ public class Main {
                     System.out.println("Bitte Zahl 2: ");
                     b = sc.nextDouble();
 
-                    result = Calculate.divide(a, b);
-                    System.out.println(result);
+                    try {
+                        result = Calculate.divide(a, b);
+                        System.out.println(result);
+                    } catch (DivideByZeroException e) {
+                        System.out.println("dividing by 0 is not possible");
+                    }
                 }
                 case "5" -> {
                     System.out.println("Sqr:");

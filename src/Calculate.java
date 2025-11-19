@@ -1,5 +1,4 @@
 public class Calculate {
-    NegativeNumberException negativeNumberException = new NegativeNumberException();
     static double add(double a, double b) {
         return a + b;
     }
@@ -12,7 +11,8 @@ public class Calculate {
         return a * b;
     }
 
-    static double divide(double a, double b) {
+    static double divide(double a, double b) throws DivideByZeroException {
+        if (b==0) throw new DivideByZeroException();
         return a / b;
     }
 
