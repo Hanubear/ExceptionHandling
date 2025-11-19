@@ -10,11 +10,13 @@ public class Main {
         boolean run = true;
         while (run) {
             String input;
-            input = sc.nextLine();
-
-
+            printMenu();
+            do {
+                input = sc.nextLine();
+            } while (!input.matches("^([1-6]|:q!)$"));
             switch (input) {
                 case "1" -> {
+                    System.out.println("Add:");
                     System.out.println("Bitte Zahl 1: ");
                     a = sc.nextDouble();
                     System.out.println("Bitte Zahl 2: ");
@@ -24,6 +26,7 @@ public class Main {
                     System.out.println(result);
                 }
                 case "2" -> {
+                    System.out.println("Sub:");
                     System.out.println("Bitte Zahl 1: ");
                     a = sc.nextDouble();
                     System.out.println("Bitte Zahl 2: ");
@@ -33,6 +36,7 @@ public class Main {
                     System.out.println(result);
                 }
                 case "3" -> {
+                    System.out.println("Mul:");
                     System.out.println("Bitte Zahl 1: ");
                     a = sc.nextDouble();
                     System.out.println("Bitte Zahl 2: ");
@@ -42,6 +46,7 @@ public class Main {
                     System.out.println(result);
                 }
                 case "4" -> {
+                    System.out.println("Div:");
                     System.out.println("Bitte Zahl 1: ");
                     a = sc.nextDouble();
                     System.out.println("Bitte Zahl 2: ");
@@ -51,6 +56,7 @@ public class Main {
                     System.out.println(result);
                 }
                 case "5" -> {
+                    System.out.println("Sqr:");
                     System.out.println("Bitte Zahl 1: ");
                     a = sc.nextDouble();
 
@@ -58,10 +64,11 @@ public class Main {
                         result = Calculate.squareRoot(a);
                         System.out.println(result);
                     } catch (NegativeNumberException e) {
-                        throw new NegativeNumberException();
+                        System.out.println("can't do sqrt of number < 0");
                     }
                 }
                 case "6" -> {
+                    System.out.println("Pow:");
                     System.out.println("Bitte Zahl 1: ");
                     a = sc.nextDouble();
                     System.out.println("Bitte Zahl 2: ");
@@ -70,11 +77,25 @@ public class Main {
                     result = Calculate.power(a, (int) b);
                     System.out.println(result);
                 }
-                case null, default -> {
+                case ":q!" -> {
+                    run = false;
                 }
             }
-
         }
+    }
+
+    static void printMenu() {
+        System.out.println("""
+                
+                what's on your mind?
+                1   -> add
+                2   -> subtract
+                3   -> multiply
+                4   -> divide
+                5   -> squareRoot
+                6   -> power
+                :q! -> close down program
+                """);
 
     }
 }
